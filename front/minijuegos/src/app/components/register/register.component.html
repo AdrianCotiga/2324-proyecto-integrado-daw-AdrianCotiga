@@ -1,0 +1,35 @@
+<div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+</div>
+
+<h2 class="p-3 text-center">Registrarse</h2>
+
+<div class="container justify-content-center">
+
+    <div class="container col w-50">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-floating mb-3">
+                <input type="text" id="nombre" formControlName="nombre" class="form-control" placeholder="Nombre">
+                <label for="nombre" class="form-label">Nombre</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" id="contra" formControlName="contra" class="form-control"
+                    placeholder="Contraseña">
+                <label for="contra" class="form-label">Contraseña</label>
+            </div>
+            <div class="text-end py-3">
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="w-100"></div>
+
+    <div class="col p-3 text-center">
+        <button type="button" class="btn btn-link" [routerLink]="['/login']">
+            Iniciar sesión
+        </button>
+    </div>
+    
+</div>

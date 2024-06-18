@@ -1,0 +1,63 @@
+<div>
+    <h2 class="p-3 text-center">Lista usuarios</h2>
+</div>
+
+<div class="container justify-content-center">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="filtro">
+        <button class="btn btn-primary" type="button" (click)="filtrarUsuarios()">Buscar</button>
+    </div>
+
+    <div class="container justify-content-center">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                        <button type="button" class="btn btn-link p-0" (click)="ordenarPor('idUsuario')">
+                            <fa-icon [icon]="faSort"></fa-icon>
+                        </button>
+
+                    </th>
+                    <th>
+                        NOMBRE
+                        <button type="button" class="btn btn-link p-0" (click)="ordenarPor('nombre')">
+                            <fa-icon [icon]="faSort"></fa-icon>
+                        </button>
+
+                    </th>
+                    <th>
+                        ROL
+                        <button type="button" class="btn btn-link p-0" (click)="ordenarPor('rol')">
+                            <fa-icon [icon]="faSort"></fa-icon>
+                        </button>
+
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (user of users; track user.idUsuario) {
+                <tr>
+                    <td>{{ user.idUsuario }}</td>
+                    <td>
+                        <button type="button" class="btn btn-link" [routerLink]="[user.idUsuario, 'detail']">
+                            {{ user.nombre }}
+                        </button>
+                    </td>
+                    <td>{{ user.rol.nombre }}</td>
+                    <td class="text-end">
+                        <div class="btn-group">
+                            <button class="btn btn-primary" [routerLink]="[user.idUsuario, 'edit']">
+                                <fa-icon [icon]="faPenToSquare"></fa-icon>
+                            </button>
+                            <button class="btn btn-danger" [routerLink]="[user.idUsuario, 'delete']">
+                                <fa-icon [icon]="faTrash"></fa-icon>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
